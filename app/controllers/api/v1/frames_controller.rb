@@ -16,6 +16,8 @@ class Api::V1::FramesController < ApplicationController
 
   # POST /api/v1/frames
   def create
+    if current_user.admin?
+
     @api_v1_frame = Api::V1::Frame.new(api_v1_frame_params)
 
     if @api_v1_frame.save
@@ -23,20 +25,36 @@ class Api::V1::FramesController < ApplicationController
     else
       render json: @api_v1_frame.errors, status: :unprocessable_entity
     end
+
+    else
+      render json: {error: "You are not authorized to create a frame"}, status: :unauthorized
+    end
   end
 
   # PATCH/PUT /api/v1/frames/1
   def update
+    if current_user.admin?
+
     if @api_v1_frame.update(api_v1_frame_params)
       render json: @api_v1_frame
     else
       render json: @api_v1_frame.errors, status: :unprocessable_entity
     end
+
+    else
+      render json: {error: "You are not authorized to update a frame"}, status: :unauthorized
+    end
   end
 
   # DELETE /api/v1/frames/1
   def destroy
+    if current_user.admin?
+
     @api_v1_frame.destroy
+  
+    else
+      render json: {error: "You are not authorized to update a frame"}, status: :unauthorized
+    end
   end
 
   private
