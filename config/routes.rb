@@ -6,7 +6,8 @@ Rails.application.routes.draw do
              }
   namespace :api do
     namespace :v1 do
-      resources :lenses
+      resources :currency_rates
+          resources :lenses
       resources :frames
     end
   end
