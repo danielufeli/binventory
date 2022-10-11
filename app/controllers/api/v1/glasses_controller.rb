@@ -6,7 +6,7 @@ class Api::V1::GlassesController < ApplicationController
   def index
     @api_v1_glasses = Api::V1::Glass.where(user_id: current_user.id)
     
-    render json: @api_v1_glasses.to_json(include: [:user, :frame])
+    render json: @api_v1_glasses.to_json(include: [:user, :api_v1_frame_id])
   end
 
   # GET /api/v1/glasses/1

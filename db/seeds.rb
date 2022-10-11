@@ -14,6 +14,15 @@ currencies = [
   {symbol: "JPY", rate: 145.74},
 ]
 
+users = [
+  {email: "admin@admin.com", role: "admin", password: "12345678"},
+  {email: "user@user.com", role: "user", password: "12345678"},
+]
+
 currencies.each do |p| 
  Api::V1::CurrencyRate.create! p 
+end
+
+users.each do |p| 
+ User.create! p 
 end
