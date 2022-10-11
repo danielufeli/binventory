@@ -6,9 +6,10 @@ Rails.application.routes.draw do
              }
   namespace :api do
     namespace :v1 do
-      resources :currency_rates
+      resources :glasses
+          resources :currency_rates
           resources :lenses
-      resources :frames
+          resources :frames
     end
   end
 end

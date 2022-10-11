@@ -8,5 +8,6 @@ class Api::V1::Lense < ApplicationRecord
   validates :lens_type, presence: true
   validates :stock, presence: true
   validates :price, presence: true
-  
+
+  has_many :api_v1_glasses
 end

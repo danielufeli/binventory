@@ -5,8 +5,11 @@ class Api::V1::FramesController < ApplicationController
   # GET /api/v1/frames
   def index
     @api_v1_frames = Api::V1::Frame.all
-
+    if current_user.admin?
     render json: @api_v1_frames
+    else
+      render json: @api_v1_frames.where(status: 'active')
+    end    
   end
 
   # GET /api/v1/frames/1

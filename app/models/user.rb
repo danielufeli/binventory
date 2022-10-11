@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :glasses
   enum role: [:user, :admin]
 
   devise :database_authenticatable,
