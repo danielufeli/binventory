@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+currencies = [
+  {symbol: "USD", rate: 1.00},
+  {symbol: "GBP", rate: 0.91},
+  {symbol: "EUR", rate: 1.03},
+  {symbol: "JOD", rate: 0.71},
+  {symbol: "JPY", rate: 145.74},
+]
+
+users = [
+  {email: "admin@admin.com", role: "admin", password: "12345678"},
+  {email: "user@user.com", role: "user", password: "12345678"},
+]
+
+currencies.each do |p| 
+ Api::V1::CurrencyRate.create! p 
+end
+
+users.each do |p| 
+ User.create! p 
+end

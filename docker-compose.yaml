@@ -1,0 +1,14 @@
+  version: "3.9"
+  services:
+    app:
+      image: binventoryapp
+      environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWD: Domi2022
+        POSTGRES_HOST: db
+      ports:
+        - 3000:3000
+    db:
+      image: postgres:alpine3.15
+      environment:
+        POSTGRES_PASSWORD: Domi2022
